@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import GroceryList from './components/GroceryList.jsx'
+import AddGrocery from './components/AddGrocery.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,11 +14,25 @@ class App extends React.Component {
         {id: 4, quantity: 1, description: "iced coffee"}
       ]
     }
+    this.handleNewItem = this.handleNewItem.bind(this)
   }
 
+handleNewItem(des, quan){
+  let newid = this.state.list.length + 1
+  let newlist = this.state.list
+  newlist.push({id:newid, quantity:quan, description:des})
+  this.setState({list:newlist})
+} 
   
   render () {
-    return null;
+    return (
+      <div>
+        Description:<input type="text" id="description"/>
+        quantity:<input type="text" id="quantity"/>
+        <AddGrocery handleNewItem={this.handleNewItem} />
+        <GroceryList list = {this.state.list} />
+      </div>
+      );
   }
 }
 
