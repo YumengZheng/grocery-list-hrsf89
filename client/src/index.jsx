@@ -29,7 +29,7 @@ handleNewItem(des, quan){
       <div>
         Description:<input type="text" id="description"/>
         quantity:<input type="text" id="quantity"/>
-        <AddGrocery handleNewItem={this.handleNewItem} />
+        <AddGrocery handleNewItem={this.handleNewItem} id={this.state.list.length}/>
         <GroceryList list = {this.state.list} />
       </div>
       );
